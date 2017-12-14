@@ -1,0 +1,21 @@
+﻿@model ProductsListViewModel
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h4>Product List</h4>
+<hr>
+
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductSummary", p)
+}
+
+<div page-model="@Model.PagingInfo" page-action="List" 
+     page-classes-enabled="true"
+     page-class="btn" 
+     page-class-normal="btn-secondary"
+     page-class-selected="btn-primary"
+     page-url-category="@Model.CurrentCategory"
+     class="btn-group mt-2">
+</div>

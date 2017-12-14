@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sports Store - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="https://use.fontawesome.com/e0e7afa21a.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="row w-100">
+            <div class="col-6">
+                <a asp-controller="product" asp-action="list" class="navbar-brand">SPORTS STORE</a>
+            </div>
+            <div class="col-6 text-right">
+                @await Component.InvokeAsync("CartSummary")
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row m-1 p-1">
+            <div id="categories" class="col-3">
+                @await Component.InvokeAsync("NavigationMenu")
+            </div>
+            <div class="col-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+@RenderSection("Scripts", required: false)
+
+</html>
