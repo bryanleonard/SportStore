@@ -18,3 +18,6 @@ h5 small {
     top: -.12rem;
 }
 
+.alert-dismissible .close {
+    top: -3px;
+}

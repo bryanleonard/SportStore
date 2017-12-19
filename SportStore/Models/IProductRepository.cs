@@ -10,5 +10,9 @@ namespace SportStore.Models
         IQueryable<Product> Products { get; }
         // Could also use IEnumerable, I think.
         // But can be less efficient as it gets ALL the stuff, not just what I need.
+
+        void SaveProduct(Product product);
+
+        Product DeleteProduct(int productID);
     }
 }
