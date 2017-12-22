@@ -24,10 +24,11 @@ namespace SportStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SportStoreProducts")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<AppIdentityDbContext>(options =>
-               // options.UseSqlServer(Configuration["Data:SportStoreIdentity:ConnectionString"])); //Another way to get conn string
+               //options.UseSqlServer(Configuration["Data:SportStoreIdentity:ConnectionString"])); 
+                //Another way to get conn string
                 options.UseSqlServer(Configuration.GetConnectionString("SportStoreIdentity")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
@@ -92,8 +93,6 @@ namespace SportStore
 
                 routes.MapRoute("default", template: "{controller}/{action}/{id?}");
             });
-
-            //SeedData.EnsurePopulated(app);
         }
     }
 }
