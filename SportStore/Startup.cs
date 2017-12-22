@@ -93,6 +93,8 @@ namespace SportStore
 
                 routes.MapRoute("default", template: "{controller}/{action}/{id?}");
             });
+
+            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

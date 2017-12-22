@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -26,6 +27,9 @@ namespace SportStore
                 {
                     var context = services.GetRequiredService<AppDbContext>();
                     SeedData.EnsurePopulated(context);
+
+                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                    IdentitySeedData.EnsurePopulated(userManager);
                 }
                 catch(Exception ex)
                 {
@@ -36,6 +40,10 @@ namespace SportStore
 
             host.Run();
         }
+        //public async static Task SeedAdmin(UserManager<IdentityUser> userManager)
+        //{
+        //    await IdentitySeedData.EnsurePopulated(userManager);
+        //}
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
